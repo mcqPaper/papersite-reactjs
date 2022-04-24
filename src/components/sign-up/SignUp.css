@@ -13,6 +13,15 @@
 
 }
 
+.invalid{
+    border: 3px solid rgb(190, 16, 16, 0.9) !important;
+}
+
+.textAlignCenter{
+    text-align: center;
+}
+
+
 h2{
     text-align: center;
 }
