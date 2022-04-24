@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+//import SignUp from './components/sign-up/SignUp';
+import SignIn from './components/sign-in/SignIn';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Chamath Gobbaya
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      {/* <SignUp /> */}
+      <SignIn />
+
     </div>
   );
 }
