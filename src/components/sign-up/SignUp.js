@@ -5,7 +5,7 @@ import './SignUp.css';
 function SignUp() {
 
     const [name, setName] = useState("")
-    const [nameErr, setNameErr] = useState(false)
+    const [nameErr, setNameErr] = useState(null)
     const [email, setEmail] = useState("")
     const [emailErr, setEmailErr] = useState(null)
     const [password, setPassword] = useState("")
@@ -20,6 +20,10 @@ function SignUp() {
         } else {
             user.userType = 1000
             console.log(user)
+            setName(null)
+            setEmail(null)
+            setPassword(null)
+
             fetch('http://104.154.234.222:8080/api/users/signup', {
                 method: 'POST',
                 headers: {
@@ -36,6 +40,7 @@ function SignUp() {
                     localStorage.setItem("userId", data.userProfile.userId)
                     localStorage.setItem("userType", data.userProfile.userType)
                     //localStorage.removeItem("name of the item")
+
                 })
                 .catch(error => {
                     //this.setState({ errorMessage: error.toString() });
@@ -97,7 +102,14 @@ function SignUp() {
                 </div>
                 <div className='form-group'>
                     <label htmlFor="name">Name</label><br />
-                    <input name="name" type="text" value={name} className={`form-control  ${emailErr ? 'invalid' : 'valid'}`} placeholder="Enter Name" onChange={nameHandler} />
+                    <input 
+                        name="name" 
+                        type="text" 
+                        value={name} 
+                        className={`form-control  ${nameErr ? 'invalid' : 'valid'}`} 
+                        placeholder="Enter Name" 
+                        onChange={nameHandler} 
+                    />
                 </div>
                 <div className='form-group'>
                     <label htmlFor="email">Email</label><br />
