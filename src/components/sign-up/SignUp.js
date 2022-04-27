@@ -18,7 +18,14 @@ function SignUp() {
     event.preventDefault();
     let user = { name, email, password };
 
-    if (emailErr || passwordErr || nameErr) {
+    if (
+      emailErr ||
+      passwordErr ||
+      nameErr ||
+      user.name.length === 0 ||
+      user.email.length === 0 ||
+      user.password.length === 0
+    ) {
       setSignUpErr(true);
     } else {
       user.userType = 1000;
@@ -117,6 +124,20 @@ function SignUp() {
     }
   }
 
+  //decide whether to disable the button
+  function buttonDisabled() {
+    if (
+      emailErr ||
+      passwordErr ||
+      nameErr ||
+      name.length === 0 ||
+      email.length === 0 ||
+      password.length === 0
+    ) {
+      return true;
+    } else return false;
+  }
+
   return (
     <div className="formContainer">
       <form onSubmit={handleData}>
@@ -160,7 +181,7 @@ function SignUp() {
           />
         </div>
         <div className="signUpButton">
-          <button type="submit" className="signUp">
+          <button type="submit" className="signUp" disabled={buttonDisabled()}>
             Sign Up
           </button>
           <br />

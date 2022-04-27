@@ -4,8 +4,8 @@ import "./SignIn.css";
 import { URL } from "../../environment/environment";
 
 function SignIn() {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   let navigate = useNavigate();
 
@@ -55,6 +55,12 @@ function SignIn() {
       );
     }
   }
+  //decide whether to disable the button
+  function buttonDisabled() {
+    if (email.length === 0 || password.length === 0) {
+      return true;
+    } else return false;
+  }
   return (
     <div>
       <div className="signInTitle">
@@ -99,7 +105,11 @@ function SignIn() {
             />
           </div>
           <div className="signInButton">
-            <button type="submit" className="signIn">
+            <button
+              type="submit"
+              className="signIn"
+              disabled={buttonDisabled()}
+            >
               Login
             </button>
           </div>
