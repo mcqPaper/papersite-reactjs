@@ -130,7 +130,7 @@ function SignUp() {
             name="name"
             type="text"
             value={name}
-            className={`form-control  ${emailErr ? "invalid" : "valid"}`}
+            className={`form-control  ${nameErr ? "invalid" : "valid"}`}
             placeholder="Enter Name"
             onChange={nameHandler}
           />
