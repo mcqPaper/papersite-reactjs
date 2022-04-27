@@ -63,7 +63,7 @@ function SignIn() {
     } else return false;
   }
   return (
-    <div>
+    <div className="formContainer">
       <div className="signInTitle">
         <span className="signInText">Don't have an account?</span>
         <span
@@ -76,7 +76,7 @@ function SignIn() {
         </span>
       </div>
 
-      <div className="formContainer">
+      <div>
         <form onSubmit={handleData}>
           <div>
             <h2>Sign In Form</h2>

@@ -31,9 +31,9 @@ h2 {
 
 .signInTitle {
   font: 18px roboto;
-  position: absolute;
-  left: 40%;
-  top: 30%;
+  position: relative;
+  top: -60px;
+  left: 20%;
 }
 
 .signInText {
