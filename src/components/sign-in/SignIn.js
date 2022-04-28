@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL } from "../../environment/environment";
+import { BASE_URL } from "../../environment/environment";
 import "./SignIn.css";
 
 function SignIn() {
@@ -13,7 +13,7 @@ function SignIn() {
     event.preventDefault();
     let user = { email, password };
     console.log(user);
-    fetch(`${URL}/api/users/login`, {
+    fetch(`${BASE_URL}/api/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +23,7 @@ function SignIn() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+
         if (data.isSuccess) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("refreshToken", data.refreshToken);
@@ -30,9 +31,11 @@ function SignIn() {
           localStorage.setItem("userId", data.userProfile.userId);
           localStorage.setItem("userType", data.userProfile.userType);
           //localStorage.removeItem("name of the item")
-        } else {
+        }
+        else {
           setErrMsg(data.message);
         }
+
       })
       .catch((error) => {
         //this.setState({ errorMessage: error.toString() });

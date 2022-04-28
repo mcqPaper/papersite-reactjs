@@ -1,6 +1,6 @@
 import { useState } from "react";
 import validator from "validator";
-import { URL } from "../../environment/environment";
+import { BASE_URL } from "../../environment/environment";
 import "./SignUp.css";
 
 
@@ -26,7 +26,7 @@ function SignUp() {
     } else {
       user.userType = 1000;
       console.log(user);
-      fetch(`${URL}/api/users/signup`, {
+      fetch(`${BASE_URL}/api/users/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
