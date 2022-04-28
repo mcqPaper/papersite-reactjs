@@ -1,8 +1,8 @@
 import { useState } from "react";
 import validator from "validator";
+import { URL } from "../../environment/environment";
 import "./SignUp.css";
 
-import { URL } from "../../environment/environment";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -19,12 +19,8 @@ function SignUp() {
     let user = { name, email, password };
 
     if (
-      emailErr ||
-      passwordErr ||
-      nameErr ||
-      user.name.length === 0 ||
-      user.email.length === 0 ||
-      user.password.length === 0
+      emailErr || passwordErr || nameErr || user.name.length === 0 ||
+      user.email.length === 0 || user.password.length === 0
     ) {
       setSignUpErr(true);
     } else {
@@ -127,12 +123,8 @@ function SignUp() {
   //decide whether to disable the button
   function buttonDisabled() {
     if (
-      emailErr ||
-      passwordErr ||
-      nameErr ||
-      name.length === 0 ||
-      email.length === 0 ||
-      password.length === 0
+      emailErr || passwordErr || nameErr || name.length === 0 ||
+      email.length === 0 || password.length === 0
     ) {
       return true;
     } else return false;
@@ -148,36 +140,27 @@ function SignUp() {
           <label htmlFor="name">Name</label>
           <br />
           <input
-            name="name"
-            type="text"
-            value={name}
+            name="name" type="text" value={name}
             className={`form-control  ${nameErr ? "invalid" : "valid"}`}
-            placeholder="Enter Name"
-            onChange={nameHandler}
+            placeholder="Enter Name" onChange={nameHandler}
           />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <br />
           <input
-            name="email"
-            type="email"
-            value={email}
-            className={`form-control  ${emailErr ? "invalid" : "valid"}`}
-            placeholder="Enter Email"
-            onChange={emailHandler}
+            name="email" type="email"
+            value={email} className={`form-control  ${emailErr ? "invalid" : "valid"}`}
+            placeholder="Enter Email" onChange={emailHandler}
           />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <br />
           <input
-            name="password"
-            type="password"
-            value={password}
+            name="password" type="password" value={password}
             className={`form-control  ${passwordErr ? "invalid" : "valid"}`}
-            placeholder="Enter Password"
-            onChange={passwordHandler}
+            placeholder="Enter Password" onChange={passwordHandler}
           />
         </div>
         <div className="signUpButton">

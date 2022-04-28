@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignIn.css";
 import { URL } from "../../environment/environment";
+import "./SignIn.css";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -66,11 +66,7 @@ function SignIn() {
     <div className="formContainer">
       <div className="signInTitle">
         <span className="signInText">Don't have an account?</span>
-        <span
-          className="signInLink"
-          onClick={() => {
-            navigate("/signUp");
-          }}
+        <span className="signInLink" onClick={() => { navigate("/signUp") }}
         >
           New user
         </span>
@@ -85,31 +81,22 @@ function SignIn() {
             <label htmlFor="email">Email</label>
             <br />
             <input
-              name="email"
-              type="email"
-              value={email}
-              className="form-control"
-              placeholder="Enter Email"
-              onChange={(event) => setEmail(event.target.value)}
+              name="email" type="email" value={email} className="form-control"
+              placeholder="Enter Email" onChange={(event) => setEmail(event.target.value)}
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <br />
             <input
-              name="password"
-              type="password"
-              value={password}
-              className="form-control"
-              placeholder="Enter Password"
-              onChange={(event) => setPassword(event.target.value)}
+              name="password" type="password" value={password} className="form-control"
+              placeholder="Enter Password" onChange={(event) => setPassword(event.target.value)}
             />
           </div>
+
           <div className="signInButton">
             <button
-              type="submit"
-              className="signIn"
-              disabled={buttonDisabled()}
+              type="submit" className="signIn" disabled={buttonDisabled()}
             >
               Login
             </button>

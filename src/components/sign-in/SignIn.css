@@ -52,6 +52,7 @@ h2 {
 .errorMessage {
   margin-top: 10px;
 }
+
 @media (max-width: 700px) {
   .formContainer {
     width: 350px;
