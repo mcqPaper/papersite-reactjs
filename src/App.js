@@ -1,12 +1,10 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./components/sign-up/SignUp";
 import SignIn from "./components/sign-in/SignIn";
+import SignUp from "./components/sign-up/SignUp";
 import Testing from "./components/testing/testing";
 
-
 function App() {
-
   return (
     <Router>
       <Routes>

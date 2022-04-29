@@ -11,13 +11,20 @@ function Testing() {
   function handleData(event) {
 
     event.preventDefault();
-
     let user = { name };
-    // console.log(user);
 
     customAxios.post(`/api/users/test`, user)
       .then(response => {
-        console.log(`primary`, response)
+
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+        else {
+          console.log(`primary`, response.data);
+        }
+
+
       })
       .catch(err => {
 
