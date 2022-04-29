@@ -1,20 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+import SignIn from "../components/sign-in/SignIn";
 
 function FriendStatus() {
-  console.log(`inside`)
-  const navigate = useNavigate();
-  console.log('new');
-  navigate('/');
-
-  // const logout = () => {
-  //   // localStorage.removeItem('logged');
-  //   console.log('new')
-  //   navigate('/')
-  // }
-  // localStorage.removeItem('logged');
-
-  return;
-
+  console.log(`inside`);
+  return
+  (
+    <div>
+      <SignIn />
+    </div>
+  )
 }
 
 export default FriendStatus;

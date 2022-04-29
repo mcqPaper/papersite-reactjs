@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../environment/environment";
-
+import FriendStatus from "./alter";
 const customAxios = axios.create({ baseURL: BASE_URL });
 
 /**
@@ -57,9 +56,8 @@ customAxios.interceptors.response.use(
           })
           .catch(err => {
             console.log(`log out`)
-            // return FriendStatus()
-            let navigate = useNavigate();
-            navigate("/");
+            return FriendStatus()
+
             // return useFriendStatus()
 
           })
