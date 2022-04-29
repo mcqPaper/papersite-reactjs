@@ -31,6 +31,7 @@ function SignIn() {
           localStorage.setItem("userId", data.userProfile.userId);
           localStorage.setItem("userType", data.userProfile.userType);
           //localStorage.removeItem("name of the item")
+          navigate("/testing")
         }
         else {
           setErrMsg(data.message);
