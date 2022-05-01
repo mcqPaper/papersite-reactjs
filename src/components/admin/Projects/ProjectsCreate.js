@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { CloseButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../sign-in/SignIn.css";
@@ -16,20 +16,17 @@ function ProjectCreate() {
     else return false;
   }, [projectName])
 
-  useEffect(() => {
-    if (closeButton) navigate("/");
-  }, [closeButton]);
 
   const handleProjectName = (event) => {
     event.preventDefault();
     console.log(`submit`)
     //should call api to create a project
-    navigate("/");
+    navigate("/projectList");
   }
 
   return (
     <div className="projectMainBox">
-      <CloseButton className="closeButton" onClick={() => setClose(true)} />
+      <CloseButton className="closeButton" onClick={() => navigate("/projectList")} />
       <div className="projectForm">
         <form onSubmit={handleProjectName}>
           <div>

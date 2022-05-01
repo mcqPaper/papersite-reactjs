@@ -1,0 +1,76 @@
+.projectList{
+  position: absolute;
+  left:8%;
+  width: 15%;
+  height: 100%;
+  box-shadow: inset 0 3px 6px rgba(100, 79, 79, 0.16), 0 4px 6px rgba(34, 132, 67, 0.45);
+  background-color: rgb(1, 70, 27) ;
+}
+
+.projectListTop{
+  position: relative;
+  width: 100%;
+  height: 20%;
+}
+
+.card{
+  position: relative;
+  left:0%;
+  width: 100%;
+  background-color: rgb(12, 145, 134) !important;
+  padding-left: 5%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  padding-right: 2.5%;
+  cursor: pointer;
+  border-radius: 0% !important;
+}
+
+.title{
+  position:absolute;
+  bottom: 0%;
+  left: 2.5%;
+
+}
+
+.addIcon{
+  color:rgb(140, 134, 134);
+  cursor:pointer;
+  position: absolute;
+  top:5%;
+  right:5%;
+}
+
+.listScroll{
+ position: relative;
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
+  overflow: auto;
+}
+
+.listScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.listScroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@media(max-width:500px){
+  .projectList{
+    width: 20%;
+  }
+  .title{
+    font-size: 15px;
+  }
+  .card{
+    font-size: 10px;
+  }
+.projectListTop{
+  height: 10%;
+}
+
+}
+
