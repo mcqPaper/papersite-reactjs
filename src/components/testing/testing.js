@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customAxios from "../../custom-axios/custom-axios";
 import "./testing.css";
 
 function Testing() {
   const [name, setName] = useState("test");
-
+  const [click, setClick] = useState(false);
   let navigate = useNavigate();
 
   function handleData(event) {
@@ -31,16 +31,21 @@ function Testing() {
       })
   }
 
+  useEffect(() => {
 
-  //decide whether to disable the button
+    console.log("On load");
+    console.log(name);
+
+  }, [click]);
+
 
   return (
     <div className="formContainer">
-      <div className="signInTitle">
 
-      </div>
 
       <div>
+        <button onClick={() => setClick(click ? false : true)}>click me</button>
+
         <form onSubmit={handleData}>
           <div>
             <h2>Sign In Form</h2>
@@ -52,11 +57,12 @@ function Testing() {
             >
               Login
             </button>
+            <br></br>
           </div>
         </form>
         <span>Success</span>
       </div>
-    </div>
+    </div >
   );
 }
 
