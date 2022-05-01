@@ -15,7 +15,6 @@ function Testing() {
 
     customAxios.post(`/api/users/test`, user)
       .then(response => {
-
         if (response.isLogout) {
           localStorage.clear();
           navigate("/");
@@ -45,7 +44,6 @@ function Testing() {
 
       <div>
         <button onClick={() => setClick(click ? false : true)}>click me</button>
-
         <form onSubmit={handleData}>
           <div>
             <h2>Sign In Form</h2>

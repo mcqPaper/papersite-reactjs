@@ -2,7 +2,6 @@ import axios from "axios";
 import { BASE_URL } from "../environment/environment";
 
 const customAxios = axios.create({ baseURL: BASE_URL });
-
 /**
 * Intercept the request
 */
@@ -51,7 +50,6 @@ customAxios.interceptors.response.use(
 
         })
           .catch(err => {
-
             return {
               isLogout: true
             }
@@ -71,6 +69,5 @@ customAxios.interceptors.response.use(
 
   }
 );
-
 
 export default customAxios;
