@@ -20,7 +20,7 @@ function ProjectCreate() {
   const handleProjectName = (event) => {
     event.preventDefault();
 
-    customAxios.post(`api/project/create`, { name: projectName })
+    customAxios.post(`api/projects/create`, { name: projectName })
       .then(response => {
 
         if (response.isLogout) {

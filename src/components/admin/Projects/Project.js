@@ -21,7 +21,7 @@ function Projects() {
   ];
 
   const [optionArray, setOPtionArray] = useState(optArr);
-  const [projectArray, setArray] = useState(array);
+  const [projectArray, setArray] = useState([]);
   const [projectId, setProjectId] = useState(``);
   const [optionType, setOption] = useState(1);
   let navigate = useNavigate();
@@ -33,24 +33,26 @@ function Projects() {
 
   useEffect(() => {
 
-    // customAxios.get(`/api/users/projects`)
-    //   .then(response => {
-    //     if (response.isLogout) {
-    //       localStorage.clear();
-    //       navigate("/");
-    //     }
-    //     else {
-    //       console.log(`primary`, response.data);
-    //       let storedId = localStorage.getItem("projectId");
-    //       let projectId = storedId ? storedId : response.data[0].id;
-    //       console.log(`project ID`, projectId);
-    //     }
+    customAxios.get(`/api/projects/list`)
+      .then(response => {
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+        else {
+          setArray(response.data)
+          console.log(`primary`, response.data);
+          let storedId = localStorage.getItem("projectId");
+          let projectId = storedId ? storedId : response.data[0].id;
+          localStorage.setItem("projectId", projectId)
+          console.log(`project ID`, projectId);
+        }
 
 
-    //   })
-    //   .catch(err => {
+      })
+      .catch(err => {
 
-    //   })
+      })
 
   }, [])
 
