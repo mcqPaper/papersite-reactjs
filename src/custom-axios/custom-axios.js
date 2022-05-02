@@ -10,7 +10,7 @@ customAxios.interceptors.request.use(
     const token = localStorage.getItem("token", '');
 
     if (token) {
-      req.headers["authorization"] = token;
+      req.headers["Authorization"] = token;
     }
     return req;
   },
