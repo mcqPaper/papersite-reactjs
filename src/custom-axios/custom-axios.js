@@ -43,7 +43,7 @@ customAxios.interceptors.response.use(
           localStorage.setItem("refreshToken", response.data.refreshToken);
 
 
-          customAxios.defaults.headers.common["x-access-token"] = response.data.token;
+          customAxios.defaults.headers.common["Authorization"] = response.data.token;
 
           return customAxios(originalReq);
 
