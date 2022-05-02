@@ -4,7 +4,7 @@ import customAxios from "../../../custom-axios/custom-axios";
 import { UserContext } from "../../../react-hooks/react-hooks";
 import PaperList from "./PaperList";
 import ProjectList from "./ProjectList";
-function Project() {
+function Projects() {
 
   let array = [{
     id: 0, name: `Ordinary level`
@@ -100,4 +100,4 @@ function Project() {
     </div>);
 }
 
-export default Project;
+export default Projects;
