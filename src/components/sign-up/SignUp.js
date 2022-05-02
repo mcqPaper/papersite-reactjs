@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 import { BASE_URL } from "../../environment/environment";
 import "./SignUp.css";
@@ -13,7 +14,7 @@ function SignUp() {
   const [passwordErr, setPasswordErr] = useState(null);
   const [signUpErr, setSignUpErr] = useState(null);
   const [errorMSg, setErrMsg] = useState("");
-
+  let navigate = useNavigate()
   function handleData(event) {
     event.preventDefault();
     let user = { name, email, password };
@@ -43,6 +44,7 @@ function SignUp() {
             localStorage.setItem("email", data.userProfile.email);
             localStorage.setItem("userId", data.userProfile.userId);
             localStorage.setItem("userType", data.userProfile.userType);
+            navigate("/projects")
             //localStorage.removeItem("name of the item")
           } else {
             setErrMsg(data.message);

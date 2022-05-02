@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import customAxios from "../../../custom-axios/custom-axios";
+import customAxios from "../../../custom-axios/custom-axios";
 import { UserContext } from "../../../react-hooks/react-hooks";
 import PaperList from "./PaperList";
 import ProjectList from "./ProjectList";
@@ -14,8 +14,16 @@ function Project() {
   { id: 2, name: `Advanced` }
   ]
 
+  let optArr = [
+    { id: 0, name: "Overview" },
+    { id: 1, name: "List" },
+    { id: 2, name: "Add" }
+  ];
+
+  const [optionArray, setOPtionArray] = useState(optArr);
   const [projectArray, setArray] = useState(array);
   const [projectId, setProjectId] = useState(``);
+  const [optionType, setOption] = useState(1);
   let navigate = useNavigate();
 
   const handleProjectId = (id) => {
@@ -24,52 +32,68 @@ function Project() {
   }
 
   useEffect(() => {
-    console.log(`load project list`);
 
-    // async function fetchData() {
-    //   // You can await here
-    //   const re = await customAxios.post(`/api/users/test`, { name: "chama" })
-    //     .then(response => {
-    //       if (response.isLogout) {
-    //         localStorage.clear();
-    //         navigate("/");
-    //       }
-    //       else {
-    //         console.log(`primary`, response.data);
-    //       }
+    // customAxios.get(`/api/users/projects`)
+    //   .then(response => {
+    //     if (response.isLogout) {
+    //       localStorage.clear();
+    //       navigate("/");
+    //     }
+    //     else {
+    //       console.log(`primary`, response.data);
+    //       let storedId = localStorage.getItem("projectId");
+    //       let projectId = storedId ? storedId : response.data[0].id;
+    //       console.log(`project ID`, projectId);
+    //     }
 
 
-    //     })
-    //     .catch(err => {
+    //   })
+    //   .catch(err => {
 
-    //     })
+    //   })
 
-    //   return re;
-    // }
-
-    // console.log(fetchData())
   }, [])
 
   useEffect(() => {
-    let run = true;
-    console.log(`run`, run)
-    if (run) console.log("project id change");
-
-    if (localStorage.getItem("aa")) console.log(`have`)
-    else console.log(`dont have`)
-    return () => {
-      run = false;
-      console.log(`inside return`)
-
+    if (localStorage.getItem("projectId")) {
+      console.log(`new project ID`, localStorage.getItem("projectId"));
+      // callPaperApi(localStorage.getItem("projectId"));
     }
 
-
   }, [projectId])
+
+  useEffect(() => {
+    if (optionType === 2) {
+
+    }
+  }, [optionType])
+
+
+  const callPaperApi = (projectId) => {
+
+    customAxios.get(`/api/users/papers/${projectId}`)
+      .then(response => {
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+        else {
+          console.log(`primary`, response.data);
+        }
+
+
+      })
+      .catch(err => {
+
+      })
+
+  }
+
 
 
   return (
     <div>
-      <UserContext.Provider value={{ projectArray, handleProjectId }}>
+      <UserContext.Provider value={{ projectArray, handleProjectId, setOption, optionArray, optionType }}>
         <ProjectList />
         <PaperList />
       </UserContext.Provider>

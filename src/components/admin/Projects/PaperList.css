@@ -1,8 +1,8 @@
 .paperList{
   position: absolute;
   right:0%;
-  width:72%;
-  background-color: white;
+  width:75%;
+  background-color:white;
   height: 100%;
   }
 
@@ -10,7 +10,7 @@
     position: relative;
     width: 100%;
     height: 15%;
-    background-color: azure ;
+    background-color:white ;
   }
 
   .userIcon{
@@ -24,20 +24,69 @@
     position: relative;
     width: 92%;
     left: 4%;
-    height: 10%;
-    background-color: aqua !important;
-    border-radius: 20px;
+    height: 8%;
+    background-color: #eaedf4 !important;
+    border-radius: 5px;
+  }
+
+   .paperOption1{
+    height: 100%;
+    background-color: #eaedf4 !important;
+    position: absolute;
+    left: 0%;
+    width: 15%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius:  5px;
+  }
+
+  .paperOption2{
+    height: 100%;
+    background-color: #eaedf4 !important;
+    position: absolute;
+    left: 15%;
+    width: 15%;
+
+  }
+
+  .paperOption3{
+    height: 100%;
+    background-color: #eaedf4 !important;
+    position: absolute;
+    left: 30%;
+    width: 15%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:  5px;
+  }
+
+  .optionCard{
+    position: relative;
+    background-color: white;
+    height: 70%;
+    width: 80%;
+    text-align: center;
+    left:20%;
+    border-radius: 10px;
+    padding-top: 5%;
+    top: 15%;
+    font-family: "Robot sans-serif" !important;
+    padding-right: 5%;
+    cursor: pointer;
+  }
+
+  .optionSelect{
+    background-color: aquamarine !important;
   }
 
   .paperScreen{
     position: relative;
     top:2%;
-    height: 73%;
+    height: 75%;
     width: 92%;
     left: 4%;
-    background-color: rgb(203, 198, 198) !important;
+    background-color: #eaedf4 !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+
   }
 
   .filterBar{
@@ -46,8 +95,8 @@
     width: 95%;
     left: 2.5%;
     height: 8%;
-    background-color: rgb(98, 98, 99) !important;
-    border-radius: 20px ;
+    background-color: #fff  !important;
+    border-radius: 5px ;
   }
 
   .paperListContent{
@@ -56,11 +105,18 @@
     top:4%;
     height:86%;
     left: 2.5%;
-    background-color: rgb(32, 205, 107) !important;
+    background-color:#fff !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-
   }
+
+  .addPaperDetail{
+    position: relative;
+    width: 50%;
+    height: 50%;
+    background-color: black !important;
+  }
+
   @media(max-width:500px){
 
     /* .title{
@@ -72,5 +128,25 @@
   .paperListTop{
     height: 10%;
   }
-
+.paperScreen{
+  height:85%;
+}
+.optionBar{
+  height:3%
+}
+.filterBar{
+  height: 6%;
+}
+.paperListContent{
+  height: 88%;
+}
+.paperOption1{
+  font-size: 8px;
+}
+.paperOption2{
+  font-size: 8px;
+}
+.paperOption3{
+  font-size: 8px;
+}
   }

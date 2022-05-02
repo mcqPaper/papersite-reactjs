@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { CloseButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import customAxios from "../../../custom-axios/custom-axios";
 import "../../sign-in/SignIn.css";
-import "../ProjectsCreate.css";
+import "./ProjectsCreate.css";
 
 function ProjectCreate() {
 
@@ -18,9 +19,25 @@ function ProjectCreate() {
 
   const handleProjectName = (event) => {
     event.preventDefault();
-    console.log(`submit`)
-    //should call api to create a project
-    navigate("/projects");
+
+    customAxios.post(`api/project/create`, { name: projectName })
+      .then(response => {
+
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+
+        else {
+          localStorage.setItem("projectId", response.data.id);
+          navigate("/projects");
+        }
+
+      })
+      .catch(err => {
+
+      })
+
   }
 
   return (
