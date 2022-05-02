@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Projects from "./components/admin/Projects/Projects";
+import Projects from "./components/admin/Projects/Project";
 import ProjectCreate from "./components/admin/Projects/ProjectsCreate";
 // import NavBar from "./components/nav-bar/NavBar";
 import SignIn from "./components/sign-in/SignIn";
