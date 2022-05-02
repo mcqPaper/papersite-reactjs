@@ -7,7 +7,6 @@ import "../ProjectsCreate.css";
 function ProjectCreate() {
 
   const [projectName, setProjectName] = useState("");
-  const [closeButton, setClose] = useState(false);
 
   let navigate = useNavigate();
 
@@ -21,12 +20,12 @@ function ProjectCreate() {
     event.preventDefault();
     console.log(`submit`)
     //should call api to create a project
-    navigate("/projectList");
+    navigate("/projects");
   }
 
   return (
     <div className="projectMainBox">
-      <CloseButton className="closeButton" onClick={() => navigate("/projectList")} />
+      <CloseButton className="closeButton" onClick={() => navigate("/projects")} />
       <div className="projectForm">
         <form onSubmit={handleProjectName}>
           <div>

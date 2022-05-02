@@ -1,29 +1,17 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../react-hooks/react-hooks";
 import ProjectCard from "./ProjectCard";
 import "./ProjectList.css";
 
 function ProjectList() {
 
-  let array = [{
-    id: 0, name: `Ordinary level`
-  },
-  { id: 1, name: `Advanced level` },
-
-  { id: 2, name: `Advanced` }
-  ]
+  const { projectArray, handleProjectId } = useContext(UserContext);
 
   let navigate = useNavigate();
-  const [projectArray, setArray] = useState(array);
-  const [projectId, setProject] = useState(0);
 
-  const handleProjectId = (id) => {
-
-    localStorage.setItem("projectId", id)
-    setProject(id);
-  }
 
   const addProject = () => {
     navigate("/projectCreate")
