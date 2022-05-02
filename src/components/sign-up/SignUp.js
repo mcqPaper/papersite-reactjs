@@ -44,7 +44,7 @@ function SignUp() {
             localStorage.setItem("email", data.userProfile.email);
             localStorage.setItem("userId", data.userProfile.userId);
             localStorage.setItem("userType", data.userProfile.userType);
-            navigate("/projects")
+            navigate("/home")
             //localStorage.removeItem("name of the item")
           } else {
             setErrMsg(data.message);

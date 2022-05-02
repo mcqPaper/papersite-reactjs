@@ -21,12 +21,12 @@ ul {
 }
 
 .nav-bar-container {
-  width: 70px;
+  width: 5%;
   position: absolute;
   left: 0;
   top: 0;
   padding-left: 0;
-  background-color: black;
+  background-color: rgb(4, 38, 11);
   height: 100%;
 }
 
