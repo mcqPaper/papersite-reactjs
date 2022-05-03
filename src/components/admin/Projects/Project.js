@@ -5,7 +5,6 @@ import { UserContext } from "../../../react-hooks/react-hooks";
 import ErrorMessage from "../../common/Error/ErrorMessage";
 import PaperList from "./PaperList";
 import ProjectList from "./ProjectList";
-<<<<<<< Updated upstream
 /**
  * Use to render project Screen components
  * @returns project screen ui
@@ -14,13 +13,6 @@ function Projects() {
 
   //options in the option array
   const optionArray = [
-=======
-
-
-function Projects() {
-
-  let optArr = [
->>>>>>> Stashed changes
     { id: 0, name: "Overview" },
     { id: 1, name: "List" },
     { id: 2, name: "Add" }
