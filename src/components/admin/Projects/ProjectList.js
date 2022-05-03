@@ -6,17 +6,26 @@ import { UserContext } from "../../../react-hooks/react-hooks";
 import ProjectCard from "./ProjectCard";
 import "./ProjectList.css";
 
+/**
+ * Render project List UI
+ * @returns Project List UI
+ */
 function ProjectList() {
 
   const { projectArray, handleProjectId } = useContext(UserContext);
 
   let navigate = useNavigate();
 
-
+  /**
+   * If user select add project feature
+   */
   const addProject = () => {
     navigate("/projectCreate")
   }
 
+  /**
+   * Render project cards
+   */
   const projectCardRender = useMemo(() => {
 
     return projectArray.map((project) => (

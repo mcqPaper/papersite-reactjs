@@ -29,38 +29,31 @@
     border-radius: 5px;
   }
 
-   .paperOption1{
+  .paperOption{
     height: 100%;
     background-color: #eaedf4 !important;
     position: absolute;
-    left: 0%;
     width: 15%;
+  }
+
+   .paperOption1{
+    left: 0%;
     border-top-left-radius: 5px;
     border-bottom-left-radius:  5px;
   }
 
   .paperOption2{
-    height: 100%;
-    background-color: #eaedf4 !important;
-    position: absolute;
     left: 15%;
-    width: 15%;
-
   }
 
   .paperOption3{
-    height: 100%;
-    background-color: #eaedf4 !important;
-    position: absolute;
     left: 30%;
-    width: 15%;
     border-top-right-radius: 5px;
     border-bottom-right-radius:  5px;
   }
 
   .optionCard{
     position: relative;
-    background-color: white;
     height: 70%;
     width: 80%;
     text-align: center;
@@ -73,9 +66,10 @@
     cursor: pointer;
   }
 
-  .optionSelect{
-    background-color: aquamarine !important;
-  }
+.selectedOPtion{
+  background-color: #0e8230 !important;
+  color: white !important;
+}
 
   .paperScreen{
     position: relative;

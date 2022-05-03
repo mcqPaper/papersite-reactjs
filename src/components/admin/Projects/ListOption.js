@@ -1,5 +1,9 @@
 import "./PaperList.css";
 
+/**
+ * Render paper screen components
+ * @returns paper screen UI
+ */
 function ListOption() {
   return (
     <div className="paperScreen">

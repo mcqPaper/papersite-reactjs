@@ -7,10 +7,17 @@ import ListOption from './ListOption';
 import OptionBar from "./OptionBar";
 import "./PaperList.css";
 
+/**
+ * render paper list, overview and paper add UI
+ * @returns Paper list, overview and paper add UI
+ */
 function PaperList() {
 
   const { optionArray, optionType } = useContext(UserContext);
 
+  /**
+   * Render option bar
+   */
   const optionRender = useMemo(() => {
 
     return optionArray.map((option) => (
@@ -22,7 +29,10 @@ function PaperList() {
     ))
   }, [optionArray])
 
-  //change content according to the option type
+
+  /**
+   * change content according to the option type
+   */
   const content = useMemo(() => {
 
     if (optionType === 1) {

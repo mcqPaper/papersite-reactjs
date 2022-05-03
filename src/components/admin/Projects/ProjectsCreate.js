@@ -5,18 +5,26 @@ import customAxios from "../../../custom-axios/custom-axios";
 import "../../sign-in/SignIn.css";
 import "./ProjectsCreate.css";
 
+/**
+ * Render project create UI
+ * @returns Project create UI
+ */
 function ProjectCreate() {
 
   const [projectName, setProjectName] = useState("");
 
   let navigate = useNavigate();
 
+  /**
+   * Check whether to disable the button
+   */
   const buttonDisabled = useMemo(() => {
     if (projectName.length === 0) return true;
     else return false;
   }, [projectName])
 
 
+  // send API call to save a project
   const handleProjectName = (event) => {
     event.preventDefault();
 
