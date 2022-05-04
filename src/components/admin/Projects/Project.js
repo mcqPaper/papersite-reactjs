@@ -82,7 +82,7 @@ function Projects() {
         (<UserContext.Provider value={
           {
             projectArray, handleProjectId, setOption,
-            optionArray, optionType
+            optionArray, optionType, projectId
           }}>
           <ProjectList />
           <PaperList />

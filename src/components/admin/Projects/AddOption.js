@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import "./AddOption.css";
 import "./PaperList.css";
-function AddOption() {
+function AddOption(props) {
   const [paperName, SetName] = useState(``);
   const [numberOfChoices, setNumberChoices] = useState(``);
 
@@ -9,6 +9,7 @@ function AddOption() {
     event.preventDefault();
     console.log(`name`, paperName);
     console.log(`number`, numberOfChoices);
+    console.log(`projectId`, props.projectId);
   }
   const buttonDisabled = useMemo(() => {
     if (paperName.length !== 0 && numberOfChoices > 0) return false;

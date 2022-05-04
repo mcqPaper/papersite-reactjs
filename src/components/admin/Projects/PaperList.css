@@ -1,146 +1,153 @@
-.paperList{
+.paperList {
   position: absolute;
-  right:0%;
-  width:75%;
-  background-color:white;
+  right: 0%;
+  width: 75%;
+  background-color: white;
   height: 100%;
-  }
+}
 
-  .paperListTop{
-    position: relative;
-    width: 100%;
-    height: 15%;
-    background-color:white ;
-  }
+.paperListTop {
+  position: relative;
+  width: 100%;
+  height: 15%;
+  background-color: white;
+}
 
-  .userIcon{
-    position: absolute;
-    right: 5%;
-    top:10%;
-    color: rgb(119, 121, 119);
-  }
+.userIcon {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  color: rgb(119, 121, 119);
+}
 
-  .optionBar{
-    position: relative;
-    width: 92%;
-    left: 4%;
-    height: 8%;
-    background-color: #eaedf4 !important;
-    border-radius: 5px;
-  }
+.optionBar {
+  position: relative;
+  width: 92%;
+  left: 4%;
+  height: 8%;
+  background-color: #eaedf4 !important;
+  border-radius: 5px;
+}
 
-  .paperOption{
-    height: 100%;
-    background-color: #eaedf4 !important;
-    position: absolute;
-    width: 15%;
-  }
+.paperOption {
+  height: 100%;
+  background-color: #eaedf4 !important;
+  position: absolute;
+  width: 15%;
+}
 
-   .paperOption1{
-    left: 0%;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius:  5px;
-  }
+.paperOption1 {
+  left: 0%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 
-  .paperOption2{
-    left: 15%;
-  }
+.paperOption2 {
+  left: 15%;
+}
 
-  .paperOption3{
-    left: 30%;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius:  5px;
-  }
+.paperOption3 {
+  left: 30%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
-  .optionCard{
-    position: relative;
-    height: 70%;
-    width: 80%;
-    text-align: center;
-    left:20%;
-    border-radius: 10px;
-    padding-top: 5%;
-    top: 15%;
-    font-family: "Robot sans-serif" !important;
-    padding-right: 5%;
-    cursor: pointer;
-  }
+.optionCard {
+  position: relative;
+  height: 70%;
+  width: 80%;
+  text-align: center;
+  left: 20%;
+  border-radius: 10px;
+  padding-top: 5%;
+  top: 15%;
+  font-family: "Robot sans-serif" !important;
+  padding-right: 5%;
+  cursor: pointer;
+}
 
-.selectedOPtion{
+.selectedOPtion {
   background-color: #0e8230 !important;
   color: white !important;
 }
 
-  .paperScreen{
-    position: relative;
-    top:2%;
-    height: 75%;
-    width: 92%;
-    left: 4%;
-    background-color: #eaedf4 !important;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.paperScreen {
+  position: relative;
+  top: 2%;
+  height: 75%;
+  width: 92%;
+  left: 4%;
+  background-color: #eaedf4 !important;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 
-  }
+}
 
-  .filterBar{
-    position: relative;
-    top: 2%;
-    width: 95%;
-    left: 2.5%;
-    height: 8%;
-    background-color: #fff  !important;
-    border-radius: 5px ;
-  }
+.filterBar {
+  position: relative;
+  top: 2%;
+  width: 95%;
+  left: 2.5%;
+  height: 8%;
+  background-color: #fff !important;
+  border-radius: 5px;
+}
 
-  .paperListContent{
-    position: relative;
-    width: 95%;
-    top:4%;
-    height:86%;
-    left: 2.5%;
-    background-color:#fff !important;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+.paperListContent {
+  position: relative;
+  width: 95%;
+  top: 4%;
+  height: 86%;
+  left: 2.5%;
+  background-color: #fff !important;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
-  .addPaperDetail{
-    position: relative;
-    width: 50%;
-    height: 50%;
-    background-color: black !important;
-  }
+.addPaperDetail {
+  position: relative;
+  width: 50%;
+  height: 50%;
+  background-color: black !important;
+}
 
-  @media(max-width:500px){
+@media(max-width:500px) {
 
-    /* .title{
+  /* .title{
       font-size: 10px;
     }
     .card{
       font-size: 8px;
     } */
-  .paperListTop{
+  .paperListTop {
     height: 10%;
   }
-.paperScreen{
-  height:85%;
-}
-.optionBar{
-  height:3%
-}
-.filterBar{
-  height: 6%;
-}
-.paperListContent{
-  height: 88%;
-}
-.paperOption1{
-  font-size: 8px;
-}
-.paperOption2{
-  font-size: 8px;
-}
-.paperOption3{
-  font-size: 8px;
-}
+
+  .paperScreen {
+    height: 85%;
   }
+
+  .optionBar {
+    height: 3%
+  }
+
+  .filterBar {
+    height: 6%;
+  }
+
+  .paperListContent {
+    height: 88%;
+  }
+
+  .paperOption1 {
+    font-size: 8px;
+  }
+
+  .paperOption2 {
+    font-size: 8px;
+  }
+
+  .paperOption3 {
+    font-size: 8px;
+  }
+}
