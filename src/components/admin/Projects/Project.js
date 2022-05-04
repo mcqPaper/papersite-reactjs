@@ -26,7 +26,8 @@ function Projects() {
     { id: 4, name: "List" },
     { id: 5, name: "Add" }
   ]
-  const [projectArray, setArray] = useState(array);
+  const [projectArray, setArray] = useState([]);
+  const [paperArray, setPaperArray] = useState([]);
   const [projectId, setProjectId] = useState(``);
   const [optionType, setOption] = useState(1);
   const [BackEndError, setBackEndError] = useState(null);
@@ -41,6 +42,7 @@ function Projects() {
   const handleProjectId = (id) => {
     // localStorage.setItem("projectId", id)
     sessionStorage.setItem(`projectId`, id);
+    console.log(id)
     setProjectId(id);
   }
 
@@ -63,6 +65,7 @@ function Projects() {
 
           let projectId = storedId ? storedId : response.data[0].id;
           sessionStorage.setItem("projectId", projectId);
+          setProjectId(projectId)
         }
 
         else {
@@ -83,10 +86,38 @@ function Projects() {
 
 
   useEffect(() => {
-    if (sessionStorage.getItem("projectId")) {
+    if (projectId) {
+      console.log('proj', projectId)
+      customAxios.get(`/api/papers/${projectId}/list`)
+        .then(response => {
+          console.log('proj1', projectId)
+          if (response.isLogout) {
+            localStorage.clear();
+            navigate("/");
+          }
 
-      // callPaperApi(localStorage.getItem("projectId"));
+          else if (response.request.status === 200) {
+
+            setPaperArray(response.data)
+            //console.log(paperArray)
+          }
+
+          else {
+            setBackEndError(response.request.statusText);
+            sessionStorage.setItem("hasError", true);
+          }
+        })
+        .catch(err => {
+        })
+
+      let storedValue = sessionStorage.getItem("projectCreate");
+
+      if (storedValue === null) storedValue = false;
+
+      setProjectCreate(storedValue);
     }
+
+
 
   }, [projectId])
 
@@ -98,7 +129,7 @@ function Projects() {
         (<UserContext.Provider value={
           {
             projectArray, handleProjectId, setOption,
-            optionArray, optionType, projectId, projectCreate
+            optionArray, optionType, projectId, projectCreate, paperArray
           }}>
           <ProjectList />
           <PaperList />

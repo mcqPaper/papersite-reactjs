@@ -3,10 +3,6 @@ li {
   list-style: none;
   color: azure;
   height: 75px;
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 10px !important; */
   vertical-align: middle;
   border: solid 2px slategray;
   border-radius: 6px;
@@ -30,8 +26,7 @@ ul {
   height: 100%;
 }
 
-/* @media (max-width: 1200px) {
-  .nav-bar-container {
-    width: 70px;
-  }
-} */
+
+l:hover {
+  background-color: yellow !important;
+}
