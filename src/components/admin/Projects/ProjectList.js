@@ -1,6 +1,6 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../react-hooks/react-hooks";
 import ProjectCard from "./ProjectCard";
@@ -12,7 +12,7 @@ import "./ProjectList.css";
  */
 function ProjectList() {
 
-  const { projectArray, handleProjectId } = useContext(UserContext);
+  const { projectArray, handleProjectId, projectId, projectCreate } = useContext(UserContext);
 
   let navigate = useNavigate();
 
@@ -22,6 +22,25 @@ function ProjectList() {
   const addProject = () => {
     navigate("/projectCreate")
   }
+
+  const ProjectListEndRef = useRef(null)
+
+
+  /**
+   * Scroll to bottom if new project is create
+   */
+  const scrollToBottom = () => {
+    ProjectListEndRef.current?.scrollIntoView({ behavior: "auto" });
+    sessionStorage.setItem(`projectCreate`, false)
+  }
+
+  useEffect(() => {
+    if (projectCreate === "true") {
+      scrollToBottom();
+    }
+
+  }, [projectCreate]);
+
 
   /**
    * Render project cards
@@ -33,10 +52,11 @@ function ProjectList() {
         key={project.id}
         project={project}
         saveProjectId={handleProjectId}
+        selectedProjectId={projectId}
       >
       </ProjectCard>
     ))
-  }, [projectArray])
+  }, [projectArray, projectId])
 
   return (
     <div className="projectList">
@@ -44,7 +64,9 @@ function ProjectList() {
         <FontAwesomeIcon icon={faPlusCircle} size="2x" className='addIcon' onClick={() => addProject()} />
         <h2 className="title">Project List</h2>
       </div>
-      <div className='listScroll'>{projectCardRender}</div>
+      <div className='listScroll'>{projectCardRender}
+        <div ref={ProjectListEndRef} />
+      </div>
 
     </div>
   );
