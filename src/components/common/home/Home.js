@@ -19,7 +19,6 @@ function Home() {
     let type = parseInt(localStorage.getItem("userType"));
 
     if (type === userTypeArray.ADMIN) {
-      console.log(`render`)
       return <Projects />;
 
     }
@@ -27,7 +26,7 @@ function Home() {
       return <div></div>
     }
 
-  })
+  }, [])
 
 
   return (
