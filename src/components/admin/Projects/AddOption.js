@@ -28,6 +28,7 @@ function AddOption() {
               <label  >Paper Name</label>
               <br />
               <input
+                type="text"
                 value={paperName} className={`form-control`}
                 placeholder="Enter Paper Name"
                 onChange={(event) => SetName(event.target.value)}
@@ -35,6 +36,7 @@ function AddOption() {
               <label >No of Choices</label>
               <br />
               <input
+                type="number"
                 value={numberOfChoices} className={`form-control`}
                 placeholder="Enter No of Choices"
                 onChange={(event) => setNumberChoices(event.target.value)}
