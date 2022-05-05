@@ -10,7 +10,7 @@ import "./ProjectList.css";
  */
 function ProjectCard({ project, saveProjectId, selectedProjectId }) {
 
-  //console.log(project)
+  // console.log(project)
   const cardClass = useMemo(() => {
     let className;
 
@@ -19,7 +19,7 @@ function ProjectCard({ project, saveProjectId, selectedProjectId }) {
     else className = "card";
 
     return className;
-  }, [selectedProjectId])
+  }, [selectedProjectId, project.id])
 
   return (
     <div>

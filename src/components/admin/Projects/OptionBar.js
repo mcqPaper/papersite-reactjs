@@ -26,6 +26,8 @@ function OptionBar({ option }) {
       case 2:
         className = "paperOption paperOption3"
         break;
+      default:
+        className = "paperOption paperOption3"
     }
     return className;
   }, [option.id])

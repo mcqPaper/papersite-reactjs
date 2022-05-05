@@ -26,7 +26,7 @@ function Projects() {
     { id: 4, name: "List" },
     { id: 5, name: "Add" }
   ]
-  const [projectArray, setArray] = useState([]);
+  const [projectArray, setArray] = useState(array);
   const [paperArray, setPaperArray] = useState([]);
   const [projectId, setProjectId] = useState(``);
   const [optionType, setOption] = useState(1);
@@ -81,16 +81,17 @@ function Projects() {
     if (storedValue === null) storedValue = false;
 
     setProjectCreate(storedValue);
-  },
-    [])
 
+  }, [])
 
   useEffect(() => {
+
     if (projectId) {
       console.log('proj', projectId)
+
       customAxios.get(`/api/papers/${projectId}/list`)
         .then(response => {
-          console.log('proj1', projectId)
+
           if (response.isLogout) {
             localStorage.clear();
             navigate("/");
@@ -110,11 +111,7 @@ function Projects() {
         .catch(err => {
         })
 
-      let storedValue = sessionStorage.getItem("projectCreate");
 
-      if (storedValue === null) storedValue = false;
-
-      setProjectCreate(storedValue);
     }
 
 

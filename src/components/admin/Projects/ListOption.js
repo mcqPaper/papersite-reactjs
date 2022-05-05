@@ -7,26 +7,38 @@ import "./PaperList.css";
  * @returns paper screen UI
  */
 function ListOption() {
-  const { paperArray, optionType } = useContext(UserContext);
-  console.log('xx', paperArray)
+  const {
+    paperArray, optionType } = useContext(UserContext);
+
+  // const array = [
+  //   { id: 0, name: "Overview" },
+  //   { id: 1, name: "List" },
+  //   { id: 2, name: "Add" },
+  //   { id: 3, name: "Overview" },
+  //   { id: 4, name: "List" },
+  //   { id: 5, name: "Add" }
+  // ]
+  console.log('xx', paperArray);
 
   const paperList = useMemo(() => {
-    return paperArray.map((paper) => {
-      //console.log(paper)
-      <PaperCard paper={paper}></PaperCard>
-    })
-  }, [paperArray, optionType])
+
+
+    return paperArray.map((paper) => (
+      <PaperCard
+        key={paper.id}
+        paper={paper}
+      >
+      </PaperCard>
+    ))
+  }, [paperArray]);
+
   console.log(paperList)
 
   return (
     <div className="paperScreen">
       <div className="filterBar"></div>
       <div className="paperListContent">
-        {/* {paperArray.map((paper) => {
-          <PaperCard paper={paper} />
-        })} */}
         {paperList}
-        {/* <h1>CCCC</h1> */}
       </div>
     </div>
   );

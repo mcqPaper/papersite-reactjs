@@ -1,0 +1,8 @@
+.paperCard{
+  position: relative;
+  width: 100%;
+  height: 10%;
+  color: black !important;
+  top: 5%;
+  background-color: blue !important;
+}
