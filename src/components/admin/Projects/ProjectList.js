@@ -31,11 +31,12 @@ function ProjectList() {
    */
   const scrollToBottom = () => {
     ProjectListEndRef.current?.scrollIntoView({ behavior: "auto" });
-    sessionStorage.setItem(`projectCreate`, false)
+    sessionStorage.setItem(`projectCreate`, false);
   }
 
   useEffect(() => {
-    if (projectCreate === "true") {
+    if (projectCreate === true) {
+      console.log(`scroll`)
       scrollToBottom();
     }
 

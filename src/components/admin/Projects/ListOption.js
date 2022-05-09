@@ -10,16 +10,6 @@ function ListOption() {
   const {
     paperArray, optionType } = useContext(UserContext);
 
-  // const array = [
-  //   { id: 0, name: "Overview" },
-  //   { id: 1, name: "List" },
-  //   { id: 2, name: "Add" },
-  //   { id: 3, name: "Overview" },
-  //   { id: 4, name: "List" },
-  //   { id: 5, name: "Add" }
-  // ]
-  console.log('xx', paperArray);
-
   const paperList = useMemo(() => {
 
 

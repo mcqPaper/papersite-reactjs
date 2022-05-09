@@ -37,9 +37,8 @@ function ProjectCreate() {
         }
 
         else {
-          // localStorage.setItem("projectId", response.data.id);
           sessionStorage.setItem("projectId", response.data.id);
-          sessionStorage.setItem(`projectCreate`, true)
+          sessionStorage.setItem(`projectCreate`, true);
           navigate("/home");
         }
 

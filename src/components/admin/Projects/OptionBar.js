@@ -43,7 +43,7 @@ function OptionBar({ option }) {
 
     return selectClass;
   },
-    [optionType])
+    [optionType, option.id])
 
   return (<div className={getClass}>
     <div className={IsSelect} onClick={() => setOption(option.id)}>{option.name}</div>

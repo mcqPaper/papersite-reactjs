@@ -78,12 +78,21 @@ function Projects() {
 
     let storedValue = sessionStorage.getItem("projectCreate");
 
-    if (storedValue === null) storedValue = false;
+    //If project create focus to create option
+    if (storedValue === "true") setOption(2);
+
+    if (storedValue === null || storedValue === "false") storedValue = false;
+
+    else storedValue = true;
 
     setProjectCreate(storedValue);
 
   }, [])
 
+
+  /**
+   * Get paper list belongs to  project
+   */
   useEffect(() => {
 
     if (projectId) {
