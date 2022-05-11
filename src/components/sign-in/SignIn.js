@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../environment/environment";
 import "./SignIn.css";
 
-function SignIn() {
+function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -30,6 +30,7 @@ function SignIn() {
           localStorage.setItem("email", data.userProfile.email);
           localStorage.setItem("userId", data.userProfile.userId);
           localStorage.setItem("userType", data.userProfile.userType);
+          props.setUseState(1000)
           //localStorage.removeItem("name of the item")
           navigate("/home")
         }

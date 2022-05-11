@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import Projects from '../../admin/Projects/Project';
 import NavBar from '../../nav-bar/NavBar';
 
-function Home() {
+function Home(props) {
 
   const userTypeArray = {
     ADMIN: 1000,
@@ -31,7 +31,7 @@ function Home() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar userType={props.userType} />
       {HomeScreen}
     </div>
   );
