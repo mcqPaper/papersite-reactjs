@@ -30,7 +30,8 @@ function ProjectList() {
    * Scroll to bottom if new project is create
    */
   const scrollToBottom = () => {
-    ProjectListEndRef.current?.scrollIntoView({ behavior: "auto" });
+
+    ProjectListEndRef.current?.scrollIntoView({ behavior: "smooth" });
     sessionStorage.setItem(`projectCreate`, false);
   }
 

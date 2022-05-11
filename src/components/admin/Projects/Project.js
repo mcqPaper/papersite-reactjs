@@ -51,30 +51,30 @@ function Projects() {
    */
   useEffect(() => {
 
-    customAxios.get(`/api/projects/list`)
-      .then(response => {
+    // customAxios.get(`/api/projects/list`)
+    //   .then(response => {
 
-        if (response.isLogout) {
-          localStorage.clear();
-          navigate("/");
-        }
+    //     if (response.isLogout) {
+    //       localStorage.clear();
+    //       navigate("/");
+    //     }
 
-        else if (response.request.status === 200) {
-          setArray(response.data);
-          let storedId = sessionStorage.getItem("projectId");
+    //     else if (response.request.status === 200) {
+    //       setArray(response.data);
+    //       let storedId = sessionStorage.getItem("projectId");
 
-          let projectId = storedId ? storedId : response.data[0].id;
-          sessionStorage.setItem("projectId", projectId);
-          setProjectId(projectId)
-        }
+    //       let projectId = storedId ? storedId : response.data[0].id;
+    //       sessionStorage.setItem("projectId", projectId);
+    //       setProjectId(projectId);
+    //     }
 
-        else {
-          setBackEndError(response.request.statusText);
-          sessionStorage.setItem("hasError", true);
-        }
-      })
-      .catch(err => {
-      })
+    //     else {
+    //       setBackEndError(response.request.statusText);
+    //       sessionStorage.setItem("hasError", true);
+    //     }
+    //   })
+    //   .catch(err => {
+    //   })
 
     let storedValue = sessionStorage.getItem("projectCreate");
 
