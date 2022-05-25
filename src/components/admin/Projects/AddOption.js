@@ -7,9 +7,9 @@ import "./PaperList.css";
 function AddOption({ projectId }) {
 
   const [paperName, SetName] = useState(``);
-  const [numberOfChoices, setNumberChoices] = useState(0);
-  const [year, setYear] = useState(0);
-  const [questionCount, setQuestionCount] = useState(0);
+  const [numberOfChoices, setNumberChoices] = useState('');
+  const [year, setYear] = useState('');
+  const [questionCount, setQuestionCount] = useState('');
 
   const navigate = useNavigate();
 
