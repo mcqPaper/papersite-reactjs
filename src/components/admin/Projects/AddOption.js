@@ -37,10 +37,7 @@ function AddOption({ projectId }) {
         }
 
         else {
-          console.log(`res`, response.data)
           localStorage.setItem("paperId", response.data.id);
-
-
         }
 
       })
