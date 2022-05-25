@@ -1,22 +1,62 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import customAxios from "../../../custom-axios/custom-axios";
 import "./AddOption.css";
 import "./PaperList.css";
-function AddOption(props) {
+
+function AddOption({ projectId }) {
+
   const [paperName, SetName] = useState(``);
-  const [numberOfChoices, setNumberChoices] = useState(``);
+  const [numberOfChoices, setNumberChoices] = useState(0);
+  const [year, setYear] = useState(0);
+  const [questionCount, setQuestionCount] = useState(0);
+
+  const navigate = useNavigate();
 
   const handlePaperData = (event) => {
+
     event.preventDefault();
-    console.log(`name`, paperName);
-    console.log(`number`, numberOfChoices);
-    console.log(`projectId`, props.projectId);
+
+    const createPaperObj = {
+      name: paperName,
+      type: 1,
+      year: parseInt(year),
+      projectId: projectId,
+      choiceCount: parseInt(numberOfChoices),
+      questionCount: parseInt(questionCount)
+    }
+
+    /**
+     * Create paper
+     */
+    customAxios.post(`api/papers/create`, createPaperObj)
+      .then(response => {
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+
+        else {
+          console.log(`res`, response.data)
+          localStorage.setItem("paperId", response.data.id);
+
+
+        }
+
+      })
+      .catch(err => {
+
+      })
+
+
   }
+
   const buttonDisabled = useMemo(() => {
-    if (paperName.length !== 0 && numberOfChoices > 0) return false;
+    if (paperName.length !== 0 && numberOfChoices > 0 && year > 0 && questionCount > 0) return false;
 
     else return true;
 
-  }, [paperName, numberOfChoices])
+  }, [paperName, numberOfChoices, year, questionCount])
 
   return (
     <div className="paperScreen">
@@ -24,9 +64,10 @@ function AddOption(props) {
         <div className="addContent">
           <form onSubmit={handlePaperData}>
             <br></br>
-            <h2>Paper Data</h2>
+
             <div className="form-group">
-              <label  >Paper Name</label>
+              <br />
+              <label className="addContentLabel"  >Paper Name</label>
               <br />
               <input
                 type="text"
@@ -34,13 +75,32 @@ function AddOption(props) {
                 placeholder="Enter Paper Name"
                 onChange={(event) => SetName(event.target.value)}
               />
-              <label >No of Choices</label>
+              <br />
+              <label className="addContentLabel" >No of Choices</label>
               <br />
               <input
                 type="number"
                 value={numberOfChoices} className={`form-control`}
                 placeholder="Enter No of Choices"
                 onChange={(event) => setNumberChoices(event.target.value)}
+              />
+              <br />
+              <label className="addContentLabel" >Year</label>
+              <br />
+              <input
+                type="number"
+                value={year} className={`form-control`}
+                placeholder="Enter year"
+                onChange={(event) => setYear(event.target.value)}
+              />
+              <br />
+              <label className="addContentLabel" >Question Count</label>
+              <br />
+              <input
+                type="number"
+                value={questionCount} className={`form-control`}
+                placeholder="Enter question count"
+                onChange={(event) => setQuestionCount(event.target.value)}
               />
             </div>
             <button

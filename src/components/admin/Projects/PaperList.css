@@ -12,7 +12,17 @@
   height: 15%;
   background-color: white;
 }
-
+.projectTitle{
+  position: relative;
+  top: 50%;
+  /* height: 80%; */
+  left: 5%;
+  width: 90%;
+  color: #2e384d;
+  font-weight: 500;
+  font-size: 1.7rem;
+  line-height: 24px
+}
 .userIcon {
   position: absolute;
   right: 5%;

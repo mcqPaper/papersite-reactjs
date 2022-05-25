@@ -7,8 +7,7 @@ import "./PaperList.css";
  * @returns paper screen UI
  */
 function ListOption() {
-  const {
-    paperArray, optionType } = useContext(UserContext);
+  const { paperArray } = useContext(UserContext);
 
   const paperList = useMemo(() => {
 
@@ -22,7 +21,6 @@ function ListOption() {
     ))
   }, [paperArray]);
 
-  console.log(paperList)
 
   return (
     <div className="paperScreen">

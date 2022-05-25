@@ -1,6 +1,6 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../react-hooks/react-hooks";
 import ProjectCard from "./ProjectCard";
@@ -12,8 +12,10 @@ import "./ProjectList.css";
  */
 function ProjectList() {
 
-  const { projectArray, handleProjectId, projectId, projectCreate } = useContext(UserContext);
+  const { projectArray, handleProjectId, project,
+    projectCreate, setProjectSearch } = useContext(UserContext);
 
+  const [tempName, SetTempName] = useState(``);
   let navigate = useNavigate();
 
   /**
@@ -44,33 +46,52 @@ function ProjectList() {
 
 
   /**
+   *  call project list when enter project name
+  * @param  event key event
+  */
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setProjectSearch(tempName)
+    }
+  }
+
+
+  /**
    * Render project cards
    */
   const projectCardRender = useMemo(() => {
 
-    return projectArray.map((project) => (
+    return projectArray.map((proj) => (
       <ProjectCard
-        key={project.id}
-        project={project}
+        key={proj.id}
+        project={proj}
         saveProjectId={handleProjectId}
-        selectedProjectId={projectId}
+        selectedProjectId={project.id}
       >
       </ProjectCard>
     ))
-  }, [projectArray, projectId])
+  }, [projectArray, project])
+
 
   return (
     <div className="projectList">
       <div className="projectListTop">
-        <FontAwesomeIcon icon={faPlusCircle} size="2x" className='addIcon' onClick={() => addProject()} />
-        <h2 className="title">Project List</h2>
+        <FontAwesomeIcon icon={faPlusCircle} size="2x" className='addIcon'
+          onClick={() => addProject()} />
+        <div className="title">Project List</div>
       </div>
+      <input
+        type="search" value={tempName} placeholder="Project Name"
+        className='projectSearch'
+        onChange={(event) => SetTempName(event.target.value)}
+        onKeyDown={(event) => handleKeyDown(event)}
+      />
       <div className='listScroll'>{projectCardRender}
         <div ref={ProjectListEndRef} />
       </div>
-
     </div>
-  );
+  )
+
 }
 
 export default ProjectList;

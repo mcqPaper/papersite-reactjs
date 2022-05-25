@@ -11,8 +11,26 @@
 .projectListTop{
   position: relative;
   width: 100%;
-  height: 15%;
+  height: 10%;
+  color: rgb(215, 215, 215);;
 }
+
+.projectSearch{
+  position: relative;
+  left:2.5%;
+  width: 95%;
+  height: 5%;
+  background-color: #2b6d2b;
+  color:rgb(215, 212, 212);
+  margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+.projectSearch::placeholder{
+color:rgb(228, 225, 225);
+padding-left: 5%;
+}
+
 
 .card{
   position: relative;
@@ -41,7 +59,7 @@
   position:absolute;
   bottom: 0%;
   left: 2.5%;
-
+  font-size: 25px;
 }
 
 .addIcon{
@@ -55,7 +73,7 @@
 .listScroll{
  position: relative;
   width: 100%;
-  height: 85%;
+  height: 80%;
   overflow-y: scroll;
   overflow: auto;
 }

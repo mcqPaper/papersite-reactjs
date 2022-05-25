@@ -10,7 +10,7 @@ import "./ProjectList.css";
  */
 function ProjectCard({ project, saveProjectId, selectedProjectId }) {
 
-  // console.log(project)
+
   const cardClass = useMemo(() => {
     let className;
 
@@ -23,10 +23,9 @@ function ProjectCard({ project, saveProjectId, selectedProjectId }) {
 
   return (
     <div>
-      <div className={cardClass} cursor="pointer" onClick={() => saveProjectId(project.id)}>
+      <div className={cardClass} cursor="pointer" onClick={() => saveProjectId(project.id, project.name)}>
         {project.name}
       </div>
-      {/* <PaperList /> */}
     </div>
   );
 }

@@ -13,7 +13,7 @@ import "./PaperList.css";
  */
 function PaperList() {
 
-  const { optionArray, optionType, projectId } = useContext(UserContext);
+  const { optionArray, optionType, project } = useContext(UserContext);
 
   /**
    * Render option bar
@@ -36,24 +36,25 @@ function PaperList() {
   const content = useMemo(() => {
 
     if (optionType === 1) {
-      return <ListOption projectId={projectId}></ListOption>
+      return <ListOption projectId={project.id}></ListOption>
     }
 
     if (optionType === 2) {
-      return <AddOption projectId={projectId}></AddOption>
+      return <AddOption projectId={project.id}></AddOption>
     }
 
     else {
       return <div></div>
     }
 
-  }, [optionType, projectId])
+  }, [optionType, project.id])
 
 
   return (
     <div className="paperList">
       <div className="paperListTop">
         <FontAwesomeIcon icon={faUserCircle} size="3x" className='userIcon' />
+        <div className='projectTitle'>{project.name}</div>
       </div>
       <div className="optionBar">
         {optionRender}

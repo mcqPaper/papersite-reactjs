@@ -28,28 +28,35 @@ function Projects() {
   ]
   const [projectArray, setArray] = useState(array);
   const [paperArray, setPaperArray] = useState([]);
-  const [projectId, setProjectId] = useState(``);
   const [optionType, setOption] = useState(1);
   const [BackEndError, setBackEndError] = useState(null);
   const [projectCreate, setProjectCreate] = useState(false);
+  const [projectSearch, setProjectSearch] = useState(``);
+  const [project, setProjectData] = useState(``);
 
   let navigate = useNavigate();
+
 
   /**
    * save project Id
    * @param {string} id project Id
    */
-  const handleProjectId = (id) => {
-    // localStorage.setItem("projectId", id)
-    sessionStorage.setItem(`projectId`, id);
-    console.log(id)
-    setProjectId(id);
+  const handleProjectId = (id, name) => {
+
+    let projectData = {
+      id: id,
+      name: name
+    }
+
+    setProjectData(projectData);
+    sessionStorage.setItem("project", JSON.stringify(projectData));
   }
 
   /**
    * Get project List
    */
   useEffect(() => {
+    console.log(`search key`, projectSearch);
 
     customAxios.get(`/api/projects/list`)
       .then(response => {
@@ -61,11 +68,19 @@ function Projects() {
 
         else if (response.request.status === 200) {
           setArray(response.data);
-          let storedId = sessionStorage.getItem("projectId");
 
-          let projectId = storedId ? storedId : response.data[0].id;
-          sessionStorage.setItem("projectId", projectId);
-          setProjectId(projectId)
+          let project = sessionStorage.getItem(`project`);
+
+          let projectId = project ? JSON.parse(project).id : response.data[0].id;
+          let projectName = project ? JSON.parse(project).name : response.data[0].name;
+
+          let projectData = {
+            id: projectId,
+            name: projectName
+          }
+          sessionStorage.setItem("project", JSON.stringify(projectData));
+
+          setProjectData(projectData);
         }
 
         else {
@@ -87,7 +102,7 @@ function Projects() {
 
     setProjectCreate(storedValue);
 
-  }, [])
+  }, [projectSearch])
 
 
   /**
@@ -95,10 +110,10 @@ function Projects() {
    */
   useEffect(() => {
 
-    if (projectId) {
-      console.log('proj', projectId)
+    if (project.id) {
+      console.log('proj', project)
 
-      customAxios.get(`/api/papers/${projectId}/list`)
+      customAxios.get(`/api/papers/${project.id}/list`)
         .then(response => {
 
           if (response.isLogout) {
@@ -109,7 +124,6 @@ function Projects() {
           else if (response.request.status === 200) {
 
             setPaperArray(response.data)
-            //console.log(paperArray)
           }
 
           else {
@@ -123,9 +137,7 @@ function Projects() {
 
     }
 
-
-
-  }, [projectId])
+  }, [project.id])
 
 
   return (
@@ -135,7 +147,7 @@ function Projects() {
         (<UserContext.Provider value={
           {
             projectArray, handleProjectId, setOption,
-            optionArray, optionType, projectId, projectCreate, paperArray
+            optionArray, optionType, project, projectCreate, paperArray, setProjectSearch
           }}>
           <ProjectList />
           <PaperList />

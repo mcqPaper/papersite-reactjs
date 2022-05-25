@@ -38,6 +38,12 @@ function ProjectCreate() {
 
         else {
           sessionStorage.setItem("projectId", response.data.id);
+          let projectData = {
+            id: response.data.id,
+            name: response.data.name
+          }
+          sessionStorage.setItem("project", JSON.stringify(projectData));
+
           sessionStorage.setItem(`projectCreate`, true);
           navigate("/home");
         }
