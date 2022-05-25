@@ -111,33 +111,36 @@ function Projects() {
   useEffect(() => {
 
     if (project.id) {
-      console.log('proj', project)
 
-      customAxios.get(`/api/papers/${project.id}/list`)
-        .then(response => {
+      if (optionType === 1) {
 
-          if (response.isLogout) {
-            localStorage.clear();
-            navigate("/");
-          }
+        customAxios.get(`/api/papers/${project.id}/list`)
+          .then(response => {
 
-          else if (response.request.status === 200) {
+            if (response.isLogout) {
+              localStorage.clear();
+              navigate("/");
+            }
 
-            setPaperArray(response.data)
-          }
+            else if (response.request.status === 200) {
 
-          else {
-            setBackEndError(response.request.statusText);
-            sessionStorage.setItem("hasError", true);
-          }
-        })
-        .catch(err => {
-        })
+              setPaperArray(response.data)
+            }
 
+            else {
+              setBackEndError(response.request.statusText);
+              sessionStorage.setItem("hasError", true);
+            }
+          })
+          .catch(err => {
+          })
+
+
+      }
 
     }
 
-  }, [project.id])
+  }, [project.id, optionType])
 
 
   return (
