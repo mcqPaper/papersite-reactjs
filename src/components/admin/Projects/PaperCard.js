@@ -4,7 +4,7 @@ import './PaperCard.css';
 
 function PaperCard(paper) {
   const [isCollapse, setIsCollapse] = useState(true)
-
+  console.log(`test`, paper.paper)
 
   return (
     <div className="class-container">
