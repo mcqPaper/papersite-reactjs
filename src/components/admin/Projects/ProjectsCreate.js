@@ -37,7 +37,6 @@ function ProjectCreate() {
         }
 
         else {
-          sessionStorage.setItem("projectId", response.data.id);
           let projectData = {
             id: response.data.id,
             name: response.data.name
