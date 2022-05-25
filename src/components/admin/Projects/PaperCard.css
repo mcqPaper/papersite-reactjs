@@ -1,14 +1,8 @@
-.class-container {
-  border: 2px solid gray;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-table {
+.paperCard{
+  position: relative;
   width: 100%;
-
-}
-
-tr {
-  padding: 100px 50px 100px 50px;
+  height: 10%;
+  color: black !important;
+  top: 5%;
+  background-color: blue !important;
 }
