@@ -14,12 +14,13 @@
   position: relative;
   width: 50%;
   top: 0%;
-  height:80%;
+  height:100%;
   left: 0%;
   padding-left: 5%;
   padding-right: 5%;
   color: aliceblue;
 }
+
 .addContentLabel{
 color: black;
 }
@@ -39,7 +40,7 @@ color: black;
 
 .paperCreateBtn {
   position: absolute;
-  bottom:  10%;
+  bottom:  5%;
   color: black;
   text-align: center;
   border-radius: 10px;

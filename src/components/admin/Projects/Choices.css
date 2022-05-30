@@ -1,0 +1,21 @@
+.choiceInput{
+  position: relative;
+  display: inline;
+  left: 2%;
+  width: 80%;
+  margin-bottom: 1%;
+}
+
+.radioInput{
+  position: absolute;
+  display: inline;
+  left: 0%;
+  top: 45% ;
+}
+
+.choice{
+  position: relative;
+  margin-top: 1%;
+  left: 10%;
+  width: 90%;
+}

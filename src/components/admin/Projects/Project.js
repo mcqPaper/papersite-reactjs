@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import customAxios from "../../../custom-axios/custom-axios";
+// import customAxios from "../../../custom-axios/custom-axios";
 import { UserContext } from "../../../react-hooks/react-hooks";
 import ErrorMessage from "../../common/Error/ErrorMessage";
 import PaperList from "./PaperList";
@@ -58,38 +58,38 @@ function Projects() {
   useEffect(() => {
     console.log(`search key`, projectSearch);
 
-    customAxios.get(`/api/projects/list`)
-      .then(response => {
+    // customAxios.get(`/api/projects/list`)
+    //   .then(response => {
 
-        if (response.isLogout) {
-          localStorage.clear();
-          navigate("/");
-        }
+    //     if (response.isLogout) {
+    //       localStorage.clear();
+    //       navigate("/");
+    //     }
 
-        else if (response.request.status === 200) {
-          setArray(response.data);
+    //     else if (response.request.status === 200) {
+    //       setArray(response.data);
 
-          let project = sessionStorage.getItem(`project`);
+    //       let project = sessionStorage.getItem(`project`);
 
-          let projectId = project ? JSON.parse(project).id : response.data[0].id;
-          let projectName = project ? JSON.parse(project).name : response.data[0].name;
+    //       let projectId = project ? JSON.parse(project).id : response.data[0].id;
+    //       let projectName = project ? JSON.parse(project).name : response.data[0].name;
 
-          let projectData = {
-            id: projectId,
-            name: projectName
-          }
-          sessionStorage.setItem("project", JSON.stringify(projectData));
+    //       let projectData = {
+    //         id: projectId,
+    //         name: projectName
+    //       }
+    //       sessionStorage.setItem("project", JSON.stringify(projectData));
 
-          setProjectData(projectData);
-        }
+    //       setProjectData(projectData);
+    //     }
 
-        else {
-          setBackEndError(response.request.statusText);
-          sessionStorage.setItem("hasError", true);
-        }
-      })
-      .catch(err => {
-      })
+    //     else {
+    //       setBackEndError(response.request.statusText);
+    //       sessionStorage.setItem("hasError", true);
+    //     }
+    //   })
+    //   .catch(err => {
+    //   })
 
     let storedValue = sessionStorage.getItem("projectCreate");
 
@@ -110,30 +110,29 @@ function Projects() {
    */
   useEffect(() => {
 
-    if (project.id) {
+    if (project.id && optionType === 1) {
 
-      if (optionType === 1) {
-        customAxios.get(`/api/papers/${project.id}/list`)
-          .then(response => {
+      //     customAxios.get(`/api/papers/${project.id}/list`)
+      //       .then(response => {
 
-            if (response.isLogout) {
-              localStorage.clear();
-              navigate("/");
-            }
+      //         if (response.isLogout) {
+      //           localStorage.clear();
+      //           navigate("/");
+      //         }
 
-            else if (response.request.status === 200) {
+      //         else if (response.request.status === 200) {
 
-              setPaperArray(response.data)
-            }
+      //           setPaperArray(response.data)
+      //         }
 
-            else {
-              setBackEndError(response.request.statusText);
-              sessionStorage.setItem("hasError", true);
-            }
-          })
-          .catch(err => {
-          })
-      }
+      //         else {
+      //           setBackEndError(response.request.statusText);
+      //           sessionStorage.setItem("hasError", true);
+      //         }
+      //       })
+      //       .catch(err => {
+      //       })
+
 
     }
 

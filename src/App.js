@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddQuestion from "./components/admin/Projects/AddQuestion";
 import ProjectCreate from "./components/admin/Projects/ProjectsCreate";
 import Home from "./components/common/home/Home";
 // import NavBar from "./components/nav-bar/NavBar";
@@ -17,6 +18,8 @@ function App() {
           <Route path="/testing" element={<Testing />} />
           <Route path="/projectCreate" element={<ProjectCreate />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/addQuestion" element={<AddQuestion />} />
+
         </Routes>
       </Router>
     </>

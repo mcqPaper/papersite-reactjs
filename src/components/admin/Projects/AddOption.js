@@ -17,6 +17,9 @@ function AddOption({ projectId }) {
 
     event.preventDefault();
 
+    // const labelClass = document.querySelector(".addContentLabel")
+    // labelClass.style.color = "blue";
+
     const createPaperObj = {
       name: paperName,
       type: 1,
@@ -61,7 +64,6 @@ function AddOption({ projectId }) {
         <div className="addContent">
           <form onSubmit={handlePaperData}>
             <br></br>
-
             <div className="form-group">
               <br />
               <label className="addContentLabel"  >Paper Name</label>
