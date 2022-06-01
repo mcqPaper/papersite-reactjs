@@ -1,34 +1,34 @@
 
-import { useState } from 'react';
 import './PaperCard.css';
-function PaperCard(paper) {
-  const [isCollapse, setIsCollapse] = useState(true)
-  console.log(`test`, paper.paper)
+function PaperCard(props) {
+  //const [isCollapse, setIsCollapse] = useState(true)
+  console.log(`test`, props.paper)
+  console.log(`test`, props.collapseId, props.paper.id)
 
   return (
     <div className="class-container">
-      <div className='paper-card' onClick={() => setIsCollapse(!isCollapse)}>
+      <div className='paper-card' onClick={() => props.setcollapseId(props.paper.id)}>
         <table>
           <tbody>
             <tr>
               <td>
-                {paper.paper.id}
+                {props.paper.id}
               </td>
               <td>
-                {paper.paper.name}
+                {props.paper.name}
               </td>
               <td>
-                {paper.paper.year}
+                {props.paper.year}
               </td>
               <td>
-                {paper.paper.type}
+                {props.paper.type}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       {
-        isCollapse ? <div></div> : <div>
+        props.collapseId !== props.paper.id ? <div></div> : <div>
           <h1>Collapsed</h1>
         </div>
       }

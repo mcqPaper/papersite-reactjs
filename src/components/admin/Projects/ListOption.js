@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { UserContext } from '../../../react-hooks/react-hooks';
 import PaperCard from './PaperCard';
 import "./PaperList.css";
@@ -7,6 +7,7 @@ import "./PaperList.css";
  * @returns paper screen UI
  */
 function ListOption() {
+  const [collapseId, setcollapseId] = useState(null)
   const { paperArray } = useContext(UserContext);
 
   const paperList = useMemo(() => {
@@ -16,10 +17,12 @@ function ListOption() {
       <PaperCard
         key={paper.id}
         paper={paper}
+        setcollapseId={setcollapseId}
+        collapseId={collapseId}
       >
       </PaperCard>
     ))
-  }, [paperArray]);
+  }, [paperArray, collapseId]);
 
 
   return (
