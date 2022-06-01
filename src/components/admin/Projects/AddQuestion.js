@@ -10,18 +10,35 @@ function AddQuestion() {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [correctChoice, setCorrectChoice] = useState('');
   const [questionArray, setQuestionArray] = useState([]);
-  const [lastQuestion, setLastQuestion] = useState(5);
+  const [lastQuestion, setLastQuestion] = useState(null);
+  const [numberOfChoices, setNumberOfChoices] = useState(null);
 
-  let numberOfChoices = parseInt(localStorage.getItem(`numberOfChoices`)) || 4;
+
+  useEffect(() => {
+    let numberOfChoices = parseInt(localStorage.getItem(`choiceCount`)) || 4;
+    setNumberOfChoices(numberOfChoices);
+    setLastQuestion(parseInt(localStorage.getItem(`questionCount`)) || 5);
+
+    //Api should be called to get choice Count and questionCount
+
+  }, [])
 
 
+  /**
+   * Save choice
+   * @param {string} value choice value
+   * @param {string} id choice id
+   */
   const saveChoice = (value, id) => {
+
     let array = choiceArray;
     array[id] = value;
+
     setChoiceArray(array);
-    setChangeChoice(changeChoice ? false : true)
+    setChangeChoice(!changeChoice);
   }
 
+  //Hide or show button according to the question
   useEffect(() => {
     const previousButton = document.querySelector(".previousButton");
     const nextButton = document.querySelector(".nextButton");
@@ -32,8 +49,13 @@ function AddQuestion() {
     if (questionNumber === lastQuestion) nextButton.style.display = "none";
     else nextButton.style.display = "inline";
 
+    localStorage.setItem(`questionNo`, questionNumber);
   }, [questionNumber, lastQuestion])
 
+
+  /**
+   * Render choices
+   */
   const answers = useMemo(() => {
     let choicesArray = [];
 
@@ -52,17 +74,73 @@ function AddQuestion() {
     }
 
     return choicesArray;
-  }, [changeChoice, correctChoice])
+  }, [changeChoice, correctChoice, numberOfChoices])
 
 
-  const saveQuestion = (event) => {
-    setChoiceArray([]);
-    setQuestion('');
-    setChangeChoice(changeChoice ? false : true)
-    setCorrectChoice('');
-    localStorage.setItem(`questionNumber`, parseInt(localStorage.getItem(`questionNumber`)) + 1);
+  /**
+   *call when previous button is clicked
+   */
+  const previousQuestion = () => {
 
-    setQuestionNumber(questionNumber + 1);
+    /**
+     * save entered values
+     */
+    saveValues();
+
+    let currentQuestionNo = questionNumber - 1;
+    setQuestionNumber(currentQuestionNo);
+
+    /**
+     * Set values to show
+     */
+    setValues(currentQuestionNo);
+  }
+
+
+  /**
+   * Call when next button is clicked
+   */
+  const nextQuestion = () => {
+
+    /**
+   * save entered values
+   */
+    saveValues();
+    let currentQuestionNo = questionNumber + 1;
+    setQuestionNumber(currentQuestionNo);
+
+
+    /**
+     * Set values to show
+     */
+    setValues(currentQuestionNo);
+  }
+
+
+  /**
+   * Set values to show
+   * @param {number} currentQuestionNo Current question number
+   */
+  const setValues = (currentQuestionNo) => {
+
+    let currentQuestion = questionArray[currentQuestionNo - 1];
+
+    if (currentQuestion !== undefined) {
+
+      setCorrectChoice(currentQuestion.correctChoice);
+      setChoiceArray(currentQuestion.choiceArray);
+      setQuestion(currentQuestion.question);
+    }
+
+    else resetValues();
+
+    setChangeChoice(!changeChoice);
+  }
+
+  /**
+   * Save entered values
+   */
+  const saveValues = () => {
 
     let array = questionArray;
 
@@ -73,22 +151,19 @@ function AddQuestion() {
     }
 
     setQuestionArray(array);
-    console.log(`Array`, questionArray)
   }
 
-  const previousQuestion = (event) => {
-    let currentQuestionNo = questionNumber - 1;
-    setQuestionNumber(currentQuestionNo);
-    let currentQuestion = questionArray[currentQuestionNo - 1];
 
-    setCorrectChoice(currentQuestion.correctChoice);
-    setChoiceArray(currentQuestion.choiceArray);
-    setQuestion(currentQuestion.question);
+  /**
+   * Reset values to show
+   */
+  const resetValues = () => {
+    setChoiceArray([]);
+    setQuestion('');
+    setCorrectChoice('');
 
-    setChangeChoice(changeChoice ? false : true);
-
+    setChangeChoice(!changeChoice);
   }
-
 
   return (
 
@@ -104,7 +179,7 @@ function AddQuestion() {
       <div className="answers">
         {answers}
         <button
-          className="questionSaveButton" onClick={saveQuestion}
+          className="questionSaveButton" onClick={saveValues}
         >
           Save
         </button>
@@ -114,7 +189,7 @@ function AddQuestion() {
           Previous
         </button>
         <button
-          className="nextButton" onClick={saveQuestion}
+          className="nextButton" onClick={nextQuestion}
         >
           Next
         </button>

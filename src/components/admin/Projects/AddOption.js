@@ -41,6 +41,9 @@ function AddOption({ projectId }) {
 
         else {
           localStorage.setItem("paperId", response.data.id);
+          localStorage.setItem("questionCount", questionCount);
+          localStorage.setItem("choiceCount", numberOfChoices);
+          navigate("/addQuestion");
         }
 
       })
