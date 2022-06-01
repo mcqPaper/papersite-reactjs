@@ -14,6 +14,7 @@ ul {
   padding-top: 10px !important;
   padding-left: 0 !important;
   padding-right: 5px;
+  cursor: pointer;
 }
 
 .nav-bar-container {
@@ -27,6 +28,6 @@ ul {
 }
 
 
-l:hover {
+li:hover {
   background-color: yellow !important;
 }
