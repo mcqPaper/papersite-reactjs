@@ -4,10 +4,13 @@ function PaperCard(props) {
   //const [isCollapse, setIsCollapse] = useState(true)
   console.log(`test`, props.paper)
   console.log(`test`, props.collapseId, props.paper.id)
+  function paperCardSelect() {
+    props.setcollapseId(props.paper.id)
+  }
 
   return (
     <div className="class-container">
-      <div className='paper-card' onClick={() => props.setcollapseId(props.paper.id)}>
+      <div className='paper-card' onClick={paperCardSelect}>
         <table>
           <tbody>
             <tr>
