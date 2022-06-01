@@ -1,6 +1,12 @@
+import { useEffect, useState } from "react";
+import { AiFillFileText, AiFillHome } from "react-icons/ai";
 import "./NavBar.css";
-function NavBar() {
 
+function NavBar(props) {
+  const [oneShow, setOneShow] = useState(true);
+  const [twoShow, setTwoShow] = useState(true);
+  const [threeShow, setThreeShow] = useState(true);
+  const [fourShow, setFourShow] = useState(true);
 
   useEffect(() => {
     var userType = localStorage.getItem("userType")

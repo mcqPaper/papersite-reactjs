@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import Projects from '../../admin/Projects/Project';
 import NavBar from '../../nav-bar/NavBar';
 
-function Home() {
+function Home(props) {
 
   const [screen, setScreen] = useState(1);
 
