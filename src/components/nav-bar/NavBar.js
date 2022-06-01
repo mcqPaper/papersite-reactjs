@@ -9,10 +9,10 @@ function NavBar(props) {
   const [fourShow, setFourShow] = useState(true);
 
   useEffect(() => {
-    //var userType = localStorage.getItem("userType")
+    var userType = localStorage.getItem("userType")
     console.log('user type is ', props.userType)
     console.log(Number(props.userType) === 1000)
-    if (Number(props.userType) === 1000) {
+    if (Number(userType) === 1000) {
       setOneShow(true)
       setTwoShow(true)
       setThreeShow(true)
@@ -29,19 +29,19 @@ function NavBar(props) {
       <ul>
         {
           !oneShow ? null :
-            <li>
+            <li onClick={() => props.setScreen(1)}>
               <AiFillFileText size={50} style={{ color: 'slategray' }} />
             </li>
         }
         {
           !twoShow ? null :
-            <li>
+            <li onClick={() => props.setScreen(2)}>
               <AiFillHome size={50} style={{ color: 'slategray' }} />
             </li>
         }
         {
           !threeShow ? null :
-            <li>
+            <li onClick={() => props.setScreen(3)}>
               About
             </li>
         }

@@ -102,6 +102,7 @@
   background-color: #fff !important;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  overflow-y: scroll;
 }
 
 .addPaperDetail {
