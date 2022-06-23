@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import customAxios from "../../../custom-axios/custom-axios";
 import "./AddQuestion.css";
 import Choices from "./Choices";
 
@@ -13,13 +15,37 @@ function AddQuestion() {
   const [lastQuestion, setLastQuestion] = useState(null);
   const [numberOfChoices, setNumberOfChoices] = useState(null);
 
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let numberOfChoices = parseInt(localStorage.getItem(`choiceCount`)) || 4;
-    setNumberOfChoices(numberOfChoices);
-    setLastQuestion(parseInt(localStorage.getItem(`questionCount`)) || 5);
+    let paperId = localStorage.getItem(`paperId`);
 
-    //Api should be called to get choice Count and questionCount
+    //Get question list
+    customAxios.get(`api/questions/${paperId}/list`)
+      .then(response => {
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+
+        else {
+          const resObj = response.data;
+          const firstQuestion = resObj.questionArray[0];
+
+          setNumberOfChoices(resObj.choiceCount);
+          setLastQuestion(resObj.questionCount);
+          setQuestionArray(resObj.questionArray);
+
+          setCorrectChoice(firstQuestion.correctChoice);
+          setChoiceArray(firstQuestion.choiceArray);
+          setQuestion(firstQuestion.question);
+
+        }
+
+      })
+      .catch(err => {
+
+      })
 
   }, [])
 
@@ -142,15 +168,42 @@ function AddQuestion() {
    */
   const saveValues = () => {
 
+    let questionId = questionArray[questionNumber - 1].id;
+
     let array = questionArray;
 
     array[questionNumber - 1] = {
+      id: questionId,
       question: question,
       correctChoice: correctChoice,
-      choiceArray: choiceArray
+      choiceArray: choiceArray,
+      questionNumber: questionNumber
     }
 
+
     setQuestionArray(array);
+
+    let body = {
+      question: question,
+      correctChoice: correctChoice,
+      choiceArray: choiceArray,
+    }
+
+    customAxios.post(`api/questions/${questionId}/save`, body)
+      .then(response => {
+        if (response.isLogout) {
+          localStorage.clear();
+          navigate("/");
+        }
+
+        else {
+
+        }
+
+      })
+      .catch(err => {
+
+      })
   }
 
 
