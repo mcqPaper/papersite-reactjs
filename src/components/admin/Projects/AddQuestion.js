@@ -174,7 +174,7 @@ function AddQuestion() {
 
     array[questionNumber - 1] = {
       id: questionId,
-      question: question,
+      question: { text: question },
       correctChoice: correctChoice,
       choiceArray: choiceArray,
       questionNumber: questionNumber
@@ -184,7 +184,7 @@ function AddQuestion() {
     setQuestionArray(array);
 
     let body = {
-      question: question,
+      question: { text: question },
       correctChoice: correctChoice,
       choiceArray: choiceArray,
     }
@@ -225,8 +225,8 @@ function AddQuestion() {
       <div className="question">
         <label>Enter Question</label>
         <textarea
-          value={question} className="questionInput"
-          onChange={(event) => setQuestion(event.target.value)}
+          value={question.text} className="questionInput"
+          onChange={(event) => setQuestion({ text: event.target.value })}
         />
       </div>
       <div className="answers">
