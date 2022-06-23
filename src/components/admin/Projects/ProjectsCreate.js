@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { CloseButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import customAxios from "../../../custom-axios/custom-axios";
@@ -56,7 +56,7 @@ function ProjectCreate() {
 
   return (
     <div className="projectMainBox">
-      <CloseButton className="closeButton" onClick={() => navigate("/projects")} />
+      <CloseButton className="closeButton" onClick={() => navigate("/home")} />
       <div className="projectForm">
         <form onSubmit={handleProjectName}>
           <div>
