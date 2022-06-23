@@ -7,7 +7,7 @@ import Choices from "./Choices";
 
 function AddQuestion() {
 
-  const [question, setQuestion] = useState('');
+  const [questionText, setQuestion] = useState('');
   const [choiceArray, setChoiceArray] = useState([]);
   const [changeChoice, setChangeChoice] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -15,7 +15,7 @@ function AddQuestion() {
   const [questionArray, setQuestionArray] = useState([]);
   const [lastQuestion, setLastQuestion] = useState(null);
   const [numberOfChoices, setNumberOfChoices] = useState(null);
-
+  console.log(`Question`, questionText)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function AddQuestion() {
 
           setCorrectChoice(firstQuestion.correctChoice);
           setChoiceArray(firstQuestion.choiceArray);
-          setQuestion(firstQuestion.question);
+          setQuestion(firstQuestion.question.text);
 
         }
 
@@ -156,7 +156,7 @@ function AddQuestion() {
 
       setCorrectChoice(currentQuestion.correctChoice);
       setChoiceArray(currentQuestion.choiceArray);
-      setQuestion(currentQuestion.question);
+      setQuestion(currentQuestion.question.text);
     }
 
     else resetValues();
@@ -175,7 +175,7 @@ function AddQuestion() {
 
     array[questionNumber - 1] = {
       id: questionId,
-      question: { text: question },
+      question: { text: questionText },
       correctChoice: correctChoice,
       choiceArray: choiceArray,
       questionNumber: questionNumber
@@ -185,7 +185,7 @@ function AddQuestion() {
     setQuestionArray(array);
 
     let body = {
-      question: { text: question },
+      question: { text: questionText },
       correctChoice: correctChoice,
       choiceArray: choiceArray,
     }
@@ -229,8 +229,8 @@ function AddQuestion() {
       <div className="question">
         <label>Enter Question</label>
         <textarea
-          value={question.text} className="questionInput"
-          onChange={(event) => setQuestion({ text: event.target.value })}
+          value={questionText} className="questionInput"
+          onChange={(event) => setQuestion(event.target.value)}
         />
       </div>
       <div className="answers">
