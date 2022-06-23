@@ -1,11 +1,21 @@
 
+import { useNavigate } from "react-router-dom";
 import './PaperCard.css';
+
 function PaperCard(props) {
   //const [isCollapse, setIsCollapse] = useState(true)
   console.log(`test`, props.paper)
   console.log(`test`, props.collapseId, props.paper.id)
+  const navigate = useNavigate();
+
+
   function paperCardSelect() {
     props.setcollapseId(props.paper.id)
+  }
+
+  function navigateToQuestions() {
+    localStorage.setItem("paperId", props.paper.id);
+    navigate("/addQuestion");
   }
 
   return (
@@ -32,7 +42,7 @@ function PaperCard(props) {
       </div>
       {
         props.collapseId !== props.paper.id ? <div></div> : <div>
-          <h1 className='collapse-card'>Collapsed</h1>
+          <button className='goToQuestions' onClick={navigateToQuestions}>Go to Questions</button>
         </div>
       }
     </div>);

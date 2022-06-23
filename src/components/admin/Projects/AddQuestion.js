@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { CloseButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import customAxios from "../../../custom-axios/custom-axios";
 import "./AddQuestion.css";
@@ -222,6 +223,9 @@ function AddQuestion() {
 
     <div className="addQuestionBorder" >
       <h1 className="questionTitle">Question {questionNumber} </h1>
+      <div>
+        <CloseButton className="closeButton" onClick={() => navigate("/home")} />
+      </div>
       <div className="question">
         <label>Enter Question</label>
         <textarea
