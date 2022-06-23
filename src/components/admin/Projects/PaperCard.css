@@ -12,3 +12,11 @@ table {
 tr {
   padding: 100px 50px 100px 50px;
 }
+
+.paper-card {
+  cursor: pointer;
+}
+
+.collapse-card {
+  cursor: pointer;
+}

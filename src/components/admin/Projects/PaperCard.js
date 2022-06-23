@@ -32,7 +32,7 @@ function PaperCard(props) {
       </div>
       {
         props.collapseId !== props.paper.id ? <div></div> : <div>
-          <h1>Collapsed</h1>
+          <h1 className='collapse-card'>Collapsed</h1>
         </div>
       }
     </div>);
