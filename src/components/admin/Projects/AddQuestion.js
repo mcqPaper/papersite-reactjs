@@ -59,7 +59,7 @@ function AddQuestion() {
   const saveChoice = (value, id) => {
 
     let array = choiceArray;
-    array[id] = value;
+    array[id] = { id: id, value: value };
 
     setChoiceArray(array);
     setChangeChoice(!changeChoice);

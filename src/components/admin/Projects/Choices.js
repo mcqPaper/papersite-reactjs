@@ -19,7 +19,7 @@ function Choices({ id, saveChoice, choice, setCorrectChoice, correctChoice }) {
         checked={checked} onChange={(event) => setCorrectChoice(id)} />
 
       <textarea
-        value={choice === undefined ? '' : choice} className="choiceInput" placeholder={placeholder}
+        value={choice === undefined ? '' : choice.value} className="choiceInput" placeholder={placeholder}
         onChange={(event) => saveChoice(event.target.value, id)}
       />
     </div>
