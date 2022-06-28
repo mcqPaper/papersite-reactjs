@@ -15,7 +15,7 @@ function AddQuestion() {
   const [questionArray, setQuestionArray] = useState([]);
   const [lastQuestion, setLastQuestion] = useState(null);
   const [numberOfChoices, setNumberOfChoices] = useState(null);
-  console.log(`Question`, questionText)
+
   const navigate = useNavigate();
 
   useEffect(() => {

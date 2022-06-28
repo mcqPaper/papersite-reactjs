@@ -38,7 +38,7 @@ function ProjectList() {
 
   useEffect(() => {
     if (projectCreate === true) {
-      console.log(`scroll`)
+
       scrollToBottom();
     }
 
